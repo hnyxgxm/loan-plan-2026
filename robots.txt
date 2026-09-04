@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hnyxgxm.github.io/loan-plan-2026/sitemap.xml
