@@ -68,6 +68,11 @@ button.primary {
   border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer;
 }
 button.primary:hover { background: var(--blue-dark); }
+a.primary {
+  display: inline-block; padding: 13px 22px; background: var(--blue); color: #fff;
+  border-radius: 8px; font-size: 16px; font-weight: 700; text-decoration: none;
+}
+a.primary:hover { background: var(--blue-dark); }
 
 /* ===== Results ===== */
 .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
