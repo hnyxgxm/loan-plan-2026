@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Loan Payment on a $50,000 Salary in 2026 (Exact RAP Math)</title>
+<meta name="description" content="On a $50k AGI your RAP payment is $83.33/month in 2026 — regardless of whether you owe $20k or $200k. See the exact tier math, how children change it, and when Standard actually beats RAP.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a class="logo" href="index.html">Loan<span>Plan</span>2026</a>
+    <nav class="site">
+      <a href="index.html">Plan Finder</a>
+      <a href="save-transition.html">SAVE Ended?</a>
+      <a href="nurses.html">For Nurses</a>
+      <a href="income-50k.html" class="active">$50k Salary</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="ad-slot ad-leaderboard">Advertisement · 728×90</div>
+</div>
+
+<main class="container">
+  <div class="hero" style="text-align:left;padding-bottom:0">
+    <div class="badge">2026 RAP RULES · EXACT MATH</div>
+    <h1>Earning $50,000? Your federal student loan payment is $83.33/month.</h1>
+    <p class="sub">Under the Repayment Assistance Plan that replaced SAVE on July 1, 2026, your payment depends on your <b>income</b> — not your balance. Here's the tier-by-tier math, and the cases where that's bad news.</p>
+  </div>
+
+  <section class="block">
+    <h2>How $83.33 is calculated (marginal tiers, like taxes)</h2>
+    <table class="compare">
+      <thead><tr><th>AGI band</th><th>RAP rate</th><th>Taxable in band at $50k</th><th>Annual amount</th></tr></thead>
+      <tbody>
+        <tr><td>$0 – $10,000</td><td>0% (no poverty-line charge)</td><td class="num">$10,000</td><td class="num">$0</td></tr>
+        <tr><td>$10,000 – $20,000</td><td>1%</td><td class="num">$10,000</td><td class="num">$100</td></tr>
+        <tr><td>$20,000 – $30,000</td><td>2%</td><td class="num">$10,000</td><td class="num">$200</td></tr>
+        <tr><td>$30,000 – $40,000</td><td>3%</td><td class="num">$10,000</td><td class="num">$300</td></tr>
+        <tr><td>$40,000 – $50,000</td><td>4%</td><td class="num">$10,000</td><td class="num">$400</td></tr>
+        <tr><td><b>Total</b></td><td></td><td></td><td class="num"><b>$1,000/yr = $83.33/mo</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">Each dependent child subtracts <b>$50/month</b>: one child → $33.33/mo; two or more children → the $10/mo statutory floor.</p>
+    <div class="alert warn">
+      <b>The catch at $50k: old plans were cheaper.</b>
+      Under the old IBR (still available to grandfathered borrowers), $50k income with a family of four often meant a <b>$0 payment</b> because of the poverty-line exemption RAP eliminated. If you're on old IBR, run both plans below before switching — moving to RAP could raise your payment, and switching back may not be allowed.
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>$50k salary: RAP vs Standard at different balances</h2>
+    <p>RAP ignores your balance entirely; Standard scales with it. The crossover is where "cheap payment" becomes "expensive life":</p>
+    <table class="compare">
+      <thead><tr><th>Balance (6.5%)</th><th>RAP /mo</th><th>Standard 10-yr /mo</th><th>Total RAP pays over 30 yr</th><th>RAP forgiven at yr 30*</th><th>Tax on forgiven (~27%)</th></tr></thead>
+      <tbody>
+        <tr><td>$20,000</td><td class="num">$83</td><td class="num">$227</td><td class="num">$30,000</td><td class="num">~$47,700</td><td class="num">~$12,900</td></tr>
+        <tr><td>$45,000</td><td class="num">$83</td><td class="num">$511</td><td class="num">$30,000</td><td class="num">~$222,000</td><td class="num">~$60,000</td></tr>
+        <tr><td>$80,000</td><td class="num">$83</td><td class="num">$909</td><td class="num">$30,000</td><td class="num">~$467,000</td><td class="num">~$126,000</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="font-size:12px;color:#64748b">*Conservative case: unpaid interest keeps accruing (RAP's interest-subsidy rules are pending final regulation). At $83.33/mo the payment never covers 6.5% interest, so the balance <b>grows for 30 years</b> — even at a $20k balance. This negative-amortization bomb is exactly why low-payment + high-balance borrowers should compare Standard or PSLF seriously, and why forgiveness being taxable since Jan 1, 2026 changes everything.</p>
+  </section>
+
+  <section class="block">
+    <h2>Plug in your exact numbers</h2>
+    <div class="calc-wrap">
+      <div class="card">
+        <form id="calc-form" data-defaults='{"agi":50000,"children":0,"balance":45000,"rate":6.5,"state":"OTHER","fedTax":"22"}'>
+          <div class="field">
+            <label for="agi">Your AGI (pre-filled: $50,000)</label>
+            <input type="number" id="agi" name="agi" min="0" step="1" value="50000" required>
+          </div>
+          <div class="field">
+            <label for="children">Dependent children</label>
+            <input type="number" id="children" name="children" min="0" max="10" value="0">
+          </div>
+          <div class="field">
+            <label for="balance">Total federal loan balance</label>
+            <input type="number" id="balance" name="balance" min="0" step="1" value="45000" required>
+          </div>
+          <div class="field">
+            <label for="rate">Average interest rate (%)</label>
+            <input type="number" id="rate" name="rate" min="0" max="15" step="0.01" value="6.5">
+          </div>
+          <div class="field">
+            <label for="state">State</label>
+            <select id="state" name="state">
+              <option value="CA">California</option><option value="NY">New York</option>
+              <option value="MA">Massachusetts</option><option value="IL">Illinois</option>
+              <option value="PA">Pennsylvania</option><option value="OH">Ohio</option>
+              <option value="GA">Georgia</option><option value="TX">Texas (no income tax)</option>
+              <option value="FL">Florida (no income tax)</option><option value="WA">Washington (no income tax)</option>
+              <option value="TN">Tennessee (no income tax)</option><option value="OTHER" selected>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fedTax">Federal bracket at forgiveness</label>
+            <select id="fedTax" name="fedTax">
+              <option value="12">12%</option><option value="22" selected>22%</option>
+              <option value="24">24%</option><option value="32">32%</option>
+            </select>
+          </div>
+          <div class="checkline">
+            <input type="checkbox" id="pslf" name="pslf">
+            <label for="pslf">PSLF-eligible employer (government / nonprofit)</label>
+          </div>
+          <button type="submit" class="primary">Compare my plans →</button>
+        </form>
+      </div>
+      <div id="results">
+        <div id="cards" class="result-grid"></div>
+        <div class="chart-box">
+          <b style="font-size:14px">Balance over time</b>
+          <div id="chart"></div>
+          <div id="legend" class="legend"></div>
+        </div>
+        <div id="compare-table"></div>
+        <div id="do-nothing"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot ad-inline">Advertisement · In-content</div>
+</main>
+
+<footer class="site">
+  <div class="container">
+    <div><b>LoanPlan2026</b> — independent, free student loan tools.</div>
+    <div>Estimates only. Not financial, tax, or legal advice. Confirm with your servicer or StudentAid.gov.</div>
+  </div>
+</footer>
+<script src="calc.js"></script>
+</body>
+</html>

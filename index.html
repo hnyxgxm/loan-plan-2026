@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Loan Repayment Plan Finder 2026 — RAP vs Standard vs PSLF Calculator</title>
+<meta name="description" content="Free calculator: compare the new Repayment Assistance Plan (RAP), Standard 10-year, and PSLF under the July 2026 rules. See your monthly payment, lifetime cost, and the forgiveness tax bomb before your 90-day window closes.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Repayment Assistance Plan (RAP)?",
+      "acceptedAnswer": { "@type": "Answer", "text": "RAP is the only income-driven repayment plan available to new federal student loan borrowers from July 1, 2026. Payments are calculated on marginal tiers of 1% to 10% of your adjusted gross income, minus $50 per month per dependent child, with a $10 minimum. Remaining balances are forgiven after 30 years." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is student loan forgiveness still tax-free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No, except for PSLF. Since January 1, 2026, amounts forgiven under income-driven plans like RAP count as taxable income. Forgiveness under Public Service Loan Forgiveness remains federally tax-free." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to SAVE plan borrowers?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The SAVE plan ended July 1, 2026. Borrowers get a 90-day window after servicer notification to pick a new plan; anyone who does not choose is automatically moved to Standard repayment, which usually means a much higher monthly payment." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="container">
+    <a class="logo" href="index.html">Loan<span>Plan</span>2026</a>
+    <nav class="site">
+      <a href="index.html" class="active">Plan Finder</a>
+      <a href="save-transition.html">SAVE Ended?</a>
+      <a href="nurses.html">For Nurses</a>
+      <a href="income-50k.html">$50k Salary</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="ad-slot ad-leaderboard">Advertisement · 728×90 Leaderboard</div>
+</div>
+
+<div class="container hero">
+  <div class="badge">UPDATED FOR THE JULY 1, 2026 RULES</div>
+  <h1>Which student loan plan actually costs you less?</h1>
+  <p class="sub">The 2026 rules killed SAVE and made RAP the only income-driven plan for new borrowers. Lower payments can mean a six-figure tax bill at forgiveness. Compare the true lifetime cost of every option in 30 seconds — free, no login, no email required.</p>
+</div>
+
+<main class="container">
+  <div class="calc-wrap">
+
+    <!-- ============ INPUT FORM ============ -->
+    <div class="card">
+      <form id="calc-form" data-defaults='{"agi":55000,"children":0,"balance":45000,"rate":6.5}'>
+        <div class="field">
+          <label for="agi">Your annual income (AGI)</label>
+          <input type="number" id="agi" name="agi" min="0" step="1" value="55000" required>
+          <div class="hint">Line 11 of your Form 1040. RAP uses AGI — no poverty-line exemption anymore.</div>
+        </div>
+        <div class="field">
+          <label for="children">Dependent children</label>
+          <input type="number" id="children" name="children" min="0" max="10" value="0">
+          <div class="hint">Each child lowers your RAP payment by $50/month.</div>
+        </div>
+        <div class="field">
+          <label for="balance">Total federal loan balance</label>
+          <input type="number" id="balance" name="balance" min="0" step="1" value="45000" required>
+          <div class="hint">From StudentAid.gov → Loan details. Federal loans only (private loans don't qualify for RAP).</div>
+        </div>
+        <div class="field">
+          <label for="rate">Average interest rate (%)</label>
+          <input type="number" id="rate" name="rate" min="0" max="15" step="0.01" value="6.5">
+        </div>
+        <div class="field">
+          <label for="state">Your state (forgiveness tax estimate)</label>
+          <select id="state" name="state">
+            <option value="CA">California</option>
+            <option value="NY">New York</option>
+            <option value="MA">Massachusetts</option>
+            <option value="IL">Illinois</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="OH">Ohio</option>
+            <option value="GA">Georgia</option>
+            <option value="TX">Texas (no income tax)</option>
+            <option value="FL">Florida (no income tax)</option>
+            <option value="WA">Washington (no income tax)</option>
+            <option value="TN">Tennessee (no income tax)</option>
+            <option value="OTHER" selected>Other / not sure</option>
+          </select>
+          <div class="hint">IDR forgiveness became taxable Jan 1, 2026. State treatment varies — we use a simplified flat rate in this demo.</div>
+        </div>
+        <div class="field">
+          <label for="fedTax">Expected federal tax bracket at forgiveness</label>
+          <select id="fedTax" name="fedTax">
+            <option value="12">12%</option>
+            <option value="22" selected>22%</option>
+            <option value="24">24%</option>
+            <option value="32">32%</option>
+          </select>
+        </div>
+        <div class="checkline">
+          <input type="checkbox" id="pslf" name="pslf">
+          <label for="pslf">I work (or plan to work) for a government or 501(c)(3) nonprofit employer → <b>PSLF eligible</b></label>
+        </div>
+        <button type="submit" class="primary">Compare my plans →</button>
+</form>
+    </div>
+
+    <!-- ============ RESULTS ============ -->
+    <div id="results">
+      <div id="cards" class="result-grid"></div>
+      <div class="chart-box">
+        <b style="font-size:14px">Balance over time</b>
+        <div id="chart"></div>
+        <div id="legend" class="legend"></div>
+      </div>
+      <div id="compare-table"></div>
+      <div id="do-nothing"></div>
+</div>
+  </div>
+
+  <div class="ad-slot ad-inline">Advertisement · In-content</div>
+
+  <section class="block faq">
+    <h2>The 2026 rules, in plain English</h2>
+    <details open>
+      <summary>What is the Repayment Assistance Plan (RAP)?</summary>
+      <p>From July 1, 2026, RAP is the <b>only</b> income-driven plan for new federal borrowers. Your payment is built from marginal tiers of your AGI: 1% of income between $10k–$20k, 2% between $20k–$30k, and so on up to 10% of income above $100k. Each dependent child subtracts $50/month; the floor is $10/month. Whatever balance remains after <b>30 years</b> of qualifying payments is forgiven.</p>
+    </details>
+    <details>
+      <summary>Is the forgiven amount taxable?</summary>
+      <p><b>Yes — this is the trap.</b> The federal tax exclusion for IDR forgiveness expired, and since January 1, 2026 forgiven balances are taxable income. A borrower with $80k forgiven could owe ~$20k+ in tax in the year of forgiveness. <b>PSLF forgiveness remains tax-free</b>, which is why the PSLF track wins for public-service workers. Some states also tax the forgiven amount; our calculator estimates both.</p>
+    </details>
+    <details>
+      <summary>What happened to SAVE, IBR, PAYE and ICR?</summary>
+      <p>SAVE ended July 1, 2026. If you were enrolled, your servicer notifies you and you have <b>90 days</b> to choose a new plan — otherwise you are auto-moved to Standard repayment (often 3–5× the RAP payment). Old IBR remains available to existing borrowers; PAYE and ICR sunset by July 1, 2028. New borrowers cannot get any of them.</p>
+    </details>
+    <details>
+      <summary>Does PSLF still exist?</summary>
+      <p>Yes. The 120-payment / 10-year structure survives, RAP payments count, and PSLF forgiveness stays tax-free. But the new "Tiered Standard" plan does <b>not</b> count toward PSLF — picking the wrong plan can waste years of progress. See <a href="nurses.html">our guide for nurses</a> for the PSLF-specific math.</p>
+    </details>
+  </section>
+
+  <div class="ad-slot ad-rect">Advertisement · 336×280 Rectangle</div>
+</main>
+
+<footer class="site">
+  <div class="container">
+    <div><b>LoanPlan2026</b> — independent, free, no-spreadsheet-needed student loan tools.</div>
+    <div>Estimates only. Not financial, tax, or legal advice. Figures based on public analyses of P.L. 119-21 (TICAS, Brookings, CRS IF13075); confirm your situation with your servicer or StudentAid.gov.</div>
+    <div><a href="save-transition.html">SAVE ended — what to do</a> · <a href="nurses.html">RAP & PSLF for nurses</a> · <a href="income-50k.html">Payments on a $50k salary</a></div>
+  </div>
+</footer>
+
+<script src="calc.js"></script>
+</body>
+</html>
