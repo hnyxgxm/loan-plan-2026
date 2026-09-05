@@ -111,7 +111,12 @@ function initCalculator() {
     }
   } catch (e) { /* ignore */ }
 
-  form.addEventListener("submit", (ev) => { ev.preventDefault(); run(); });
+  form.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    run();
+    if (typeof window.gtag === "function") window.gtag("event", "calc_submit", { best_plan: currentBest });
+  });
+  let currentBest = null;
   run(); // auto-run with defaults so the page shows results immediately
 
   function run() {
@@ -161,6 +166,7 @@ function initCalculator() {
     if (pslfSim) plans.push({ key: "pslf", cost: pslfTotalCost });
     plans.sort((a, b) => a.cost - b.cost);
     const best = plans[0].key;
+    currentBest = best;
 
     const forgivenYear = new Date().getFullYear() + 30;
 
